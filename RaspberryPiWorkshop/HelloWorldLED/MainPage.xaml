@@ -8,6 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock >
+                <Run Text="Pressed: " />
+                <Run x:Name="runPressed" />
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

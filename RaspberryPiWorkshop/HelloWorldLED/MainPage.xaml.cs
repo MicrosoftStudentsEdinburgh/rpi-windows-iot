@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -39,6 +40,14 @@ namespace HelloWorldLED
             // set the color of the red-green-blue LED labelled 
             // D2 (diode 2) on the board to yellow
             fez.D2.Color = FEZHAT.Color.Yellow;
+
+            while (true)
+            {
+                // update the runPressed Run's Text to be that of button DIO18's value
+                runPressed.Text = fez.IsDIO18Pressed().ToString();
+                // wait 100ms
+                await Task.Delay(100);
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace SerialTemplate
-{[]
+{
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>

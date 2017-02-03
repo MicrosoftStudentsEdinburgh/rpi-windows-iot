@@ -126,6 +126,7 @@ namespace PingPongLed
                 //          9  8  7  6
                 pos = 1;
                 lost = false;
+                bool first = true;
 
                 while (true)
                 {
@@ -136,12 +137,14 @@ namespace PingPongLed
 
                     if (pos == 0 && !pressed)
                     {
-                        IncPlayer2Score();
+                        if (!first)
+                            IncPlayer2Score();
                         break;
                     }
                     else if (pos == ledPins.Count() - 1 && !pressed)
                     {
-                        IncPlayer1Score();
+                        if (!first)
+                            IncPlayer1Score();
                         break;
                     }
 
@@ -154,7 +157,11 @@ namespace PingPongLed
                         // if we have reached the end of a cycle reset the position
                         // and decrease the delay to make it go faster
                         pos = 0;
-                        delay -= 50;
+                        if (delay > 200)
+                            delay -= 100;
+                        else
+                            delay -= 50;
+                        first = false;
                     }
 
                     // find out the led position
@@ -177,7 +184,7 @@ namespace PingPongLed
         {
             await Dispatcher.RunIdleAsync(a =>
             {
-                if (args.Edge == GpioPinEdge.RisingEdge)
+                if (args.Edge == GpioPinEdge.FallingEdge)
                 {
                     if (pos == 5)
                         pressed = true;
@@ -194,7 +201,7 @@ namespace PingPongLed
         {
             await Dispatcher.RunIdleAsync(a =>
             {
-                if (args.Edge == GpioPinEdge.RisingEdge)
+                if (args.Edge == GpioPinEdge.FallingEdge)
                 {
                     if (pos == 0)
                         pressed = true;
