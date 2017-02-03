@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="WeatherStation.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeatherStation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>
+                <Run Text="Light: " />
+                <Run x:Name="runLight" />
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Temperature: " />
+                <Run x:Name="runTemperature" />
+                <Run Text="°C" />
+            </TextBlock>
+            <TextBlock>
+                <Run Text="" />
+            </TextBlock>
+
+            <Ellipse Name="btnEllipse" Width="50" Height="20" Fill="Red" />
+        </StackPanel>
+    </Grid>
+</Page>
