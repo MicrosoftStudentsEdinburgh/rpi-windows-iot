@@ -13,8 +13,6 @@
                 <Run Text="Message: " />
                 <Run x:Name="runMessage" />
             </TextBlock>
-            <TextBox Name="textSend" Width="500" />
-            <Button Name="buttonSend" Content="Send!" Click="buttonSend_Click" />
         </StackPanel>
     </Grid>
 </Page>

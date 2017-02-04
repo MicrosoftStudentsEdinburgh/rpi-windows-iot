@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Devices;
-using Microsoft.Azure.Devices.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +24,7 @@ namespace HelloWorldCloudService
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        DeviceClient client;
+        ServiceClient client;
 
         public MainPage()
         {
@@ -40,8 +39,9 @@ namespace HelloWorldCloudService
 
         public async void ConnectAzure()
         {
-            client = DeviceClient.CreateFromConnectionString(textConnection.Text, TransportType.Amqp_Tcp_Only);
+            client = ServiceClient.CreateFromConnectionString(textConnection.Text, Microsoft.Azure.Devices.TransportType.Amqp);
             await client.OpenAsync();
+
             textConnection.Text = "Connected!";
         }
 
@@ -54,9 +54,8 @@ namespace HelloWorldCloudService
         {
             var data = Encoding.UTF8.GetBytes(textSend.Text);
             var msg = new Message(data);
-            msg.To = "MyDevice2";
 
-            await client.SendEventAsync(msg);
+            await client.SendAsync("MyDevice2", msg);
         }
 
     }

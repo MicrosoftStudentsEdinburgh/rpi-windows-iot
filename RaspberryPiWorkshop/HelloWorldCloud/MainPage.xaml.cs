@@ -42,15 +42,8 @@ namespace HelloWorldCloud
         public async void ConnectAzure()
         {
             var tpm = new TpmDevice(0);
-            /* var hostName = tpm.GetHostName();
-            var deviceId = tpm.GetDeviceId();
-            var token = tpm.GetSASToken(); */
             var connectionString = tpm.GetConnectionString();
-
-            /*client = DeviceClient.Create(
-                hostName, 
-                AuthenticationMethodFactory.CreateAuthenticationWithToken(deviceId, token),
-                TransportType.Amqp_Tcp_Only);*/
+            
             client = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Amqp_Tcp_Only);
             await client.OpenAsync();
 
@@ -71,14 +64,6 @@ namespace HelloWorldCloud
                     await client.CompleteAsync(msg);
                 }
             }
-        }
-
-        private async void buttonSend_Click(object sender, RoutedEventArgs e)
-        {
-            var data = Encoding.UTF8.GetBytes(textSend.Text);
-            var msg = new Message(data);
-            await client.SendEventAsync(msg);
-            textSend.Text = "";
         }
     }
 }

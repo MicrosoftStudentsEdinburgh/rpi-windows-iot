@@ -11,11 +11,6 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox Name="textConnection" />
             <Button Name="buttonConnect" Content="Connect!" Click="buttonConnect_Click" />
-            
-            <TextBlock>
-                <Run Text="Message: " />
-                <Run x:Name="runMessage" />
-            </TextBlock>
             <TextBox Name="textSend" Width="500" />
             <Button Name="buttonSend" Content="Send!" Click="buttonSend_Click" />
         </StackPanel>
