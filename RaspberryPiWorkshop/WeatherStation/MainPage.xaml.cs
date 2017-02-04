@@ -50,7 +50,7 @@ namespace WeatherStation
                 fez.D2.Color = new FEZHAT.Color((byte)brightness, (byte)brightness, (byte)brightness);
 
                 btnEllipse.Fill = new SolidColorBrush(fez.IsDIO18Pressed() ? Colors.Green : Colors.Red);
-
+               
                 await Task.Delay(100);
             }
         }
